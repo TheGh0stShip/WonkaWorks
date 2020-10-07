@@ -1,0 +1,1 @@
+start robocopy D: C: . /e /copyall
