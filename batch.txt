@@ -1,0 +1,119 @@
+@Echo Off
+:: Initial label for redundancy
+:start
+cls
+goto greet
+
+:greet
+@Echo Off
+Echo Hello %USERNAME%
+pause
+goto menu
+
+:menu
+@Echo Off
+cls
+
+ECHO.
+ECHO ...................................................
+ECHO .     PRESS 1, 2, 3 or 4 for OS, or 5 to EXIT     .
+ECHO ...................................................
+ECHO.
+ECHO 1 - Windows XP HDD (xCopy)
+ECHO 2 - Windows XP Removable Media (DiskCopy)
+ECHO 3 - Windows Vista and Win 7 (RoboCopy)
+ECHO 4 - Windows 8 and 8.1 (DiskShadow)
+ECHO 5 - Quit
+echo.
+set choice=
+set /p choice=Type the number to print text.
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto xp1
+if '%choice%'=='2' goto xp2
+if '%choice%'=='3' goto win7
+if '%choice%'=='4' goto win8
+if '%choice%'=='5" goto quit
+ECHO "%choice%" is not valid, try again
+
+:xp1
+
+pause
+
+::XP removable Media Copy Menu
+:xp2
+cls
+echo This utility "DiskCopy" will create a bit by bit clone.
+echo.
+echo Caution: This will only work copy to and from removable media of same format
+set choice= 
+set /p choice= Start (y) or (n)?
+if '%choice%'=='y' goto xp2start
+if '%choice%'=='n' goto xp2return
+
+::XP2 redirect to main menu
+:xp2return
+cls 
+echo Returning to Main Menu
+goto menu
+
+
+::XP Removable Media
+:xp2start
+echo This utility will proceed to copy, please have media inserted.
+set choice=
+set /p choice= Enter Source Drive Letter
+if '%choice%'=='a' goto dska
+if '%choice%'=='b' goto dskb
+if '%choice%'=='d' goto dskd
+if '%choice%'=='e' goto dske
+if '%choice%'=='f' goto dskf
+
+:dska
+set choice=
+set /p choice= Enter Destination Drive Letter
+if '%choice%'=='b' start diskcopy a: b: /v
+if '%choice%'=='d' do diskcopy a: d: /v
+if '%choice%'=='e' do diskcopy a: e: /v
+if '%choice%'=='d' do diskcopy a: f: /v
+
+:dskb
+set choice=
+set /p choice= Enter Destination Drive Letter
+if '%choice%'=='a' do diskcopy b: a: /v
+if '%choice%'=='d' do diskcopy b: d: /v
+if '%choice%'=='e' do diskcopy b: e: /v
+if '%choice%'=='f' do diskcopy b: f: /v
+
+:dskd
+set choice=
+set /p choice= Enter Destination Drive Letter
+if '%choice%'=='a' do diskcopy d: a: /v
+if '%choice%'=='b' do diskcopy d: b: /v
+if '%choice%'=='e' do diskcopy d: e: /v
+if '%choice%'=='f' do diskcopy d: f: /v
+
+:dske
+set choice=
+set /p choice= Enter Destination Drive Letter
+if '%choice%'=='a' do diskcopy e: a: /v
+if '%choice%'=='b' do diskcopy e: b: /v
+if '%choice%'=='d' do diskcopy e: d: /v
+if '%choice%'=='f' do diskcopy e: f: /v
+
+:dskf
+set choice=
+set /p choice= Enter Destination Drive Letter
+if '%choice%'=='a' do diskcopy f: a: /v
+if '%choice%'=='b' do diskcopy f: b: /v
+if '%choice%'=='d' do diskcopy f: d: /v
+if '%choice%'=='e' do diskcopy f: e: /v
+
+
+:win7
+
+
+:win8
+pause
+
+:quit
+pause

@@ -1,0 +1,38 @@
+@echo off
+break off
+::XP Removable Media
+:xp2start
+echo This utility will proceed to copy, please have media inserted.
+choice /c:abde
+IF ERRORLEVEL a SET M=1
+IF ERRORLEVEL b SET M=2
+IF ERRORLEVEL c SET M=3
+IF ERRORLEVEL d SET M=4
+IF %M%==1 GOTO dsk1
+IF %M%==2 GOTO dsk2
+IF %M%==3 GOTO dsk3
+IF %M%==4 GOTO dsk4
+
+a,b
+a,d
+a,e
+b,d
+b,e
+d,e
+
+for %%a in (a b d e) do diskcopy a: b: /v
+for %%b in (a b d e) do diskcopy a: d: /v
+for %%c in (a b d e) do diskcopy a: e: /v
+for %%d in (a b d e) do diskcopy b: d: /v
+for %%e in (a b d e) do diskcopy b: e: /v
+for %%f in (a b d e) do diskcopy d: e: /v
+for %%g in (a b d e) do goto dsk1
+for %%h in (a b d e) do goto dsk1
+for %%i in (a b d e) do goto dsk1
+for %%j in (a b d e) do goto dsk1
+for %%k in (a b d e) do goto dsk1
+for %%l in (a b d e) do goto dsk1
+for %%o in (a b d e) do goto dsk1
+for %%p in (a b d e) do goto dsk1
+for %%q in (a b d e) do goto dsk1
+for %%r in (a b d e) do goto dsk1

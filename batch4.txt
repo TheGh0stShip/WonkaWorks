@@ -1,0 +1,45 @@
+::XP xCopy
+:xp
+echo This utility will proceed to copy, please have media inserted.
+set choice=
+set /p choice= Enter Source Drive Letter
+if '%choice%'=='a' goto dska
+if '%choice%'=='b' goto dskb
+if '%choice%'=='d' goto dskd
+if '%choice%'=='e' goto dske
+if '%choice%'=='f' goto dskf
+
+xcopy a: b:\xcopy /s /e /h /f /r /v
+
+
+
+:win8
+cls
+echo This utility "DiskShadow" will create a disk image  a root directory and all files and subfolders.
+echo.
+echo Security, Timestamps, and Permissions will remain untouched. (Mirror will be in root of destination i.e c:\robo)
+set choice= 
+set /p choice= Start (y) or (n)?  
+if '%choice%'=='y' goto w7start
+if '%choice%'=='n' goto w7men
+
+::w8men redirect to main menu
+:w8men
+cls 
+echo Returning to Main Menu
+pause
+goto menu
+
+
+::Windows 8 and 8.1 DiskShadow
+:w8start
+echo This utility will proceed to RoboCopy, ensure you select correct drive path.
+echo.
+set choice=
+set /p choice= Enter Source Drive Letter 
+if '%choice%'=='a' goto w7a
+if '%choice%'=='b' goto w7b
+if '%choice%'=='d' goto w7c
+if '%choice%'=='e' goto w7d
+if '%choice%'=='f' goto w7e
+if '%choice%'=='f' goto w7f
